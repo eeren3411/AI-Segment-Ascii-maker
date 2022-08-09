@@ -17,8 +17,6 @@ class HumanSegmentator:
         result = self.selfieSegmentation.process(RGBimage)
 
         condition = np.stack((result.segmentation_mask,) * 3, axis=-1) > 0.1
-        print(result.segmentation_mask)
-        print(condition)
         background = np.zeros(image.shape, dtype=np.uint8)
         background[:] = (0, 0, 0)
         output = np.where(condition, image, background)
