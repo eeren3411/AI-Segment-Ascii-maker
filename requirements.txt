@@ -1,0 +1,6 @@
+AdelaiDet==0.2.0
+detectron2==0.6
+mediapipe==0.8.10.1
+numpy==1.23.1
+opencv_python==4.6.0.66
+torch==1.12.0
