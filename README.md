@@ -37,7 +37,7 @@ https://huggingface.co/spaces/hysts/Yet-Another-Anime-Segmenter
 
 
 # Results
-Note: Output width can be modifieable
+Note: Output width and aspect ratio are modifieable
 
 ![ayaka](https://user-images.githubusercontent.com/77689346/183608268-f3ecfa20-906a-4192-8495-b08b0d9b477a.jpg)
 
