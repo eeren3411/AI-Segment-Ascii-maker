@@ -4,7 +4,7 @@ Segments humans or anime characters from background and draws ascii art of them.
 You can extend this project easily even without changing main code. Just make your segmentor or gray scaler class and gave them as arguments.
 
 ```
-Note: I have no idea but I wrote "segmentator" instead of "segmenter" at every corner of this project.
+Note: I have no idea why but I wrote "segmentator" instead of "segmenter" at every corner of this project.
 Just think "segmentator" as "segmenter" and you're good to go!
 ```
 
