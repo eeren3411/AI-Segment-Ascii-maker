@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 class AsciiMaker:
-    def __init__(self, segmentator="Human", grayScaler=None, targetWidth = 150):
+    def __init__(self, segmentator="Human", grayScaler=None):
         if segmentator == "Normal" or segmentator == "Human":
             from Segmentator import HumanSegmentator
             self.segmentator = HumanSegmentator()
@@ -29,10 +29,12 @@ class AsciiMaker:
         self._225 = "#"
         self._else = "@"
 
+
+    def run(self, image, targetWidth = 150):
+    
+        
         #target width in characters
         self._targetWidth = targetWidth
-
-    def run(self, image):
 
         if(type(image) == type("string")): #If input is a string, program assumes that its path to image and reads it as image
             image = cv2.imread(image)
@@ -54,18 +56,13 @@ class AsciiMaker:
 
         #Dark images are usually pretty hard to convert
         #so I'm just multiplying the value by a scale factor
-        gammaScaler = 1
-        if(self.segmentator == None):
-            gammaScaler = 100/np.average(grayImg)
-        else:
-            gammaScaler = 35/np.average(grayImg)
-        
+        gammaScaler = 100/(np.sum(grayImg) / np.count_nonzero(grayImg))
         gammaScaler = max(1, gammaScaler)
 
         for y in range(targetDims[1]):
             for x in range(targetDims[0]):
                 value = grayImg[y][x] * gammaScaler
-                if value < 25:
+                if value < 25 or grayImg[y][x] == 255:
                     print(self._25, end="")
                 elif value < 50:
                     print(self._50, end="")
@@ -89,7 +86,7 @@ class AsciiMaker:
 
 def main():
     asciiMaker = AsciiMaker(segmentator="Anime")
-    asciiMaker.run("./hutao.png")
+    asciiMaker.run("../kurumi.jpg", targetWidth=300)
 
 def test():
     print(".") #25
